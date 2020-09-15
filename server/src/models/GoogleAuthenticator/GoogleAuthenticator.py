@@ -3,7 +3,7 @@ GoogleAuthenticator.py
 @author Christopher Smith
 @description Authentication object for the Google API
 @created 2020-09-14T15:17:59.190Z-07:00
-@last-modified 2020-09-15T13:38:01.175Z-07:00
+@last-modified 2020-09-15T15:36:03.180Z-07:00
 """
 
 import os.path
