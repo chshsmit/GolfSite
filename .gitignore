@@ -1,0 +1,7 @@
+.vscode/**
+env/**
+__pycache__
+output.py
+quickstart.py
+credentials.json
+token.pickle
