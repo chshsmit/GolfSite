@@ -3,7 +3,7 @@ sheets_routes.py
 @author Christopher Smith
 @description Routes to retrieve data from google sheets
 @created 2020-09-15T13:26:16.262Z-07:00
-@last-modified 2020-09-15T14:45:25.806Z-07:00
+@last-modified 2020-09-16T14:13:56.516Z-07:00
 """
 
 import json
