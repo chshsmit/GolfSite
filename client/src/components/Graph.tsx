@@ -3,13 +3,13 @@
  * @author Christopher Smith
  * @description Main Graph component
  * @created 2020-09-16T13:54:38.707Z-07:00
- * @last-modified 2020-09-16T14:18:49.800Z-07:00
+ * @last-modified 2020-09-16T14:31:29.299Z-07:00
  */
 
 import React, { useState, useEffect } from "react";
 import { VictoryLine, VictoryChart } from "victory";
 
-const Graph = () => {
+const Graph = (): React.ReactElement => {
   const [graphData, setGraphData] = useState([]);
 
   useEffect(() => {
