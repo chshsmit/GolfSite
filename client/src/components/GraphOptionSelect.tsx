@@ -3,18 +3,67 @@
  * @author Christopher Smith
  * @description
  * @created 2020-09-16T14:43:33.968Z-07:00
- * @last-modified 2020-09-16T14:46:58.258Z-07:00
+ * @last-modified 2020-09-16T16:21:25.539Z-07:00
  */
 
 import React from "react";
 
-import { MenuItem, Select } from "@material-ui/core";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import { MenuItem, Select, InputLabel, FormControl } from "@material-ui/core";
+import { type } from "os";
 
-const GraphOptionSelect = (): React.ReactElement => {
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    formControl: {
+      margin: theme.spacing(1),
+      minWidth: 120,
+    },
+    selectEmpty: {
+      marginTop: theme.spacing(2),
+    },
+  })
+);
+
+interface Option {
+  value: string;
+  label: string;
+}
+
+type GraphOptionSelectProps = {
+  graphOptions: Array<Option>;
+  value: string;
+  onChange: (value: string) => void;
+};
+
+const GraphOptionSelect = ({
+  graphOptions,
+  value,
+  onChange,
+}: GraphOptionSelectProps): React.ReactElement => {
+  const classes = useStyles();
+
+  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) =>
+    onChange(event.target.value as string);
+
+  console.log(graphOptions);
+
+  const options = graphOptions.map((option) => (
+    <MenuItem key={option.value} value={option.value}>
+      {option.label}
+    </MenuItem>
+  ));
+
   return (
-    <Select style={{ margin: "auto" }}>
-      <MenuItem value="fullCourses">Full Courses</MenuItem>
-    </Select>
+    <FormControl className={classes.formControl}>
+      <InputLabel id="graphOptionSelectLabel">Graph Option</InputLabel>
+      <Select
+        labelId="graphOptionSelectLabel"
+        value={value}
+        onChange={handleChange}
+      >
+        {options}
+      </Select>
+    </FormControl>
   );
 };
 
