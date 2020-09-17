@@ -3,14 +3,13 @@
  * @author Christopher Smith
  * @description
  * @created 2020-09-16T14:43:33.968Z-07:00
- * @last-modified 2020-09-16T16:21:25.539Z-07:00
+ * @last-modified 2020-09-16T17:18:37.638Z-07:00
  */
 
 import React from "react";
 
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { MenuItem, Select, InputLabel, FormControl } from "@material-ui/core";
-import { type } from "os";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -44,8 +43,6 @@ const GraphOptionSelect = ({
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) =>
     onChange(event.target.value as string);
-
-  console.log(graphOptions);
 
   const options = graphOptions.map((option) => (
     <MenuItem key={option.value} value={option.value}>

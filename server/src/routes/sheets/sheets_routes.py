@@ -3,7 +3,7 @@ sheets_routes.py
 @author Christopher Smith
 @description Routes to retrieve data from google sheets
 @created 2020-09-15T13:26:16.262Z-07:00
-@last-modified 2020-09-16T14:13:56.516Z-07:00
+@last-modified 2020-09-16T17:24:01.842Z-07:00
 """
 
 import json
@@ -27,9 +27,25 @@ def sheets_data(wanted_data: str):
         Getting data from a specific range in the google sheet
     """
 
+    try:
+        range_data = DataRanges(wanted_data)
+    except ValueError:
+        return jsonify({"error": f"Invalid range: {wanted_data}"}), 400
+
     data = SheetsAccessor.get_data_for_range(
         credentials=GoogleAuth.credentials,
-        range=DataRanges(wanted_data).value[1],
+        range=range_data.value["range"],
     )
 
-    return jsonify(data), 200
+    return (
+        jsonify(
+            {
+                "graphData": data,
+                "axisData": {
+                    "xAxis": range_data.value["xAxis"],
+                    "yAxis": range_data.value["yAxis"],
+                },
+            }
+        ),
+        200,
+    )
