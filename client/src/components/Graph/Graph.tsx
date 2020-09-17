@@ -3,12 +3,20 @@
  * @author Christopher Smith
  * @description Main Graph component
  * @created 2020-09-16T13:54:38.707Z-07:00
- * @last-modified 2020-09-16T18:02:13.600Z-07:00
+ * @last-modified 2020-09-17T16:28:02.851Z-07:00
  */
 
 import React, { useState, useEffect } from "react";
-import { VictoryLine, VictoryChart, VictoryAxis, VictoryLabel } from "victory";
 import GraphOptionSelect from "./GraphOptionSelect";
+import {
+  LineChart,
+  Line,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+} from "recharts";
+import CustomTooltip from "./CustomTooltip";
 
 const Graph = (): React.ReactElement => {
   const [graphData, setGraphData] = useState([]);
@@ -34,7 +42,7 @@ const Graph = (): React.ReactElement => {
     }
   }, [graphOption]);
 
-  console.log(graphData);
+  console.log(axes);
 
   return (
     <>
@@ -43,50 +51,18 @@ const Graph = (): React.ReactElement => {
         onChange={setGraphOption}
         graphOptions={graphOptions}
       />
-      <VictoryChart domainPadding={40}>
-        <VictoryAxis
-          axisLabelComponent={<VictoryLabel />}
-          scale={{ x: "time" }}
-          fixLabelOverlap
-          style={{
-            axisLabel: {
-              fontFamily: "inherit",
-              fontWeight: 100,
-              stroke: "white",
-              fontSize: 12,
-            },
-            grid: { stroke: "lightgrey" },
-            tickLabels: {
-              fontFamily: "inherit",
-              fontWeight: 100,
-              fontSize: 12,
-            },
-          }}
-        />
-        <VictoryAxis
-          dependentAxis
-          axisLabelComponent={<VictoryLabel />}
-          label={"Number of Commits"}
-          fixLabelOverlap
-          style={{
-            axisLabel: {
-              fontFamily: "inherit",
-              fontWeight: 100,
-              stroke: "white",
-              fontSize: 12,
-              margin: "30px",
-            },
-            grid: { stroke: "lightgrey" },
-            tickLabels: {
-              fontFamily: "inherit",
-              fontWeight: 100,
-              fontSize: 12,
-              marginBlock: "20px",
-            },
-          }}
-        />
-        <VictoryLine data={graphData} x={axes.xAxis} y={axes.yAxis} />
-      </VictoryChart>
+      <LineChart
+        width={600}
+        height={300}
+        data={graphData}
+        margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+      >
+        <Line type="monotone" dataKey={axes.yAxis} stroke="#8884d8" />
+        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+        <XAxis dataKey={axes.xAxis} />
+        <YAxis />
+        <Tooltip content={<CustomTooltip />} />
+      </LineChart>
     </>
   );
 };
