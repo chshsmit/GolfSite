@@ -1,19 +1,19 @@
 """
-metadata_routes.py
+options_routes.py
 @author Christopher Smith
 @description 
 @created 2020-09-16T14:32:24.310Z-07:00
-@last-modified 2020-09-16T17:24:40.004Z-07:00
+@last-modified 2020-09-18T16:03:34.950Z-07:00
 """
 
 from flask import Blueprint, jsonify
 
 from src.models.DataRanges.DataRanges import DataRanges
 
-metadata = Blueprint("metadata", __name__)
+options = Blueprint("options", __name__)
 
 
-@metadata.route("/graphOptions", methods=["GET"])
+@options.route("/options/graph", methods=["GET"])
 def graph_options():
 
     options = [
