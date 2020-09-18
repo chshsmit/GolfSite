@@ -3,7 +3,7 @@ DataRanges.py
 @author Christopher Smith
 @description Ranges of data in the spreadsheet
 @created 2020-09-14T15:39:27.987Z-07:00
-@last-modified 2020-09-18T13:22:19.539Z-07:00
+@last-modified 2020-09-18T16:01:58.110Z-07:00
 """
 
 from enum import Enum
@@ -17,6 +17,7 @@ class DataRanges(Enum):
         "xAxis": "Date",
         "yAxis": "Score",
     }
+
     EXECUTIVE_COURSES = {
         "value": "executiveCourses",
         "range": "TabularData!F2:I",
@@ -24,6 +25,7 @@ class DataRanges(Enum):
         "xAxis": "Date",
         "yAxis": "Score",
     }
+
     OVER_UNDER_FULL_PROGRESSION = {
         "value": "overUnderFullProgress",
         "range": "TabularData!K2:N",
@@ -31,6 +33,7 @@ class DataRanges(Enum):
         "xAxis": "Date",
         "yAxis": "Over/Under",
     }
+
     OVER_UNDER_EXECUTIVE_PROGRESSION = {
         "value": "overUnderExecProgress",
         "range": "TabularData!P2:S",
@@ -38,6 +41,7 @@ class DataRanges(Enum):
         "xAxis": "Date",
         "yAxis": "Over/Under",
     }
+
     OVER_UNDER_OVERALL = {
         "value": "overallOverUnder",
         "range": "TabularData!U2:X",
@@ -52,14 +56,6 @@ class DataRanges(Enum):
         "label": "Handicap Per Round",
         "xAxis": "Date",
         "yAxis": "Differential",
-    }
-
-    COURSE_RATINGS = {
-        "value": "courseRatings",
-        "range": "TabularData!AG2:AI",
-        "label": "Course Ratings",
-        "xAxis": "Course",
-        "yAxis": "Rating",
     }
 
     @classmethod
