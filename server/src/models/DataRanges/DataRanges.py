@@ -3,7 +3,7 @@ DataRanges.py
 @author Christopher Smith
 @description Ranges of data in the spreadsheet
 @created 2020-09-14T15:39:27.987Z-07:00
-@last-modified 2020-09-16T17:18:26.522Z-07:00
+@last-modified 2020-09-18T13:22:19.539Z-07:00
 """
 
 from enum import Enum
@@ -44,6 +44,22 @@ class DataRanges(Enum):
         "label": "Over/Under Overall",
         "xAxis": "Date",
         "yAxis": "Over/Under",
+    }
+
+    HDCP_DIFF_PER_ROUND = {
+        "value": "hdcpDiffPerRound",
+        "range": "TabularData!Z2:AE",
+        "label": "Handicap Per Round",
+        "xAxis": "Date",
+        "yAxis": "Differential",
+    }
+
+    COURSE_RATINGS = {
+        "value": "courseRatings",
+        "range": "TabularData!AG2:AI",
+        "label": "Course Ratings",
+        "xAxis": "Course",
+        "yAxis": "Rating",
     }
 
     @classmethod

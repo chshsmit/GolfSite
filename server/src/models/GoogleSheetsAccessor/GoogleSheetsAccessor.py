@@ -3,7 +3,7 @@ GoogleSheetsAccessor.py
 @author Christopher Smith
 @description Access range of data from Google Sheets API
 @created 2020-09-14T15:29:20.508Z-07:00
-@last-modified 2020-09-16T14:16:39.769Z-07:00
+@last-modified 2020-09-18T13:02:40.125Z-07:00
 """
 
 from googleapiclient.discovery import build
@@ -23,15 +23,20 @@ class GoogleSheetsAccessor:
         )
         values = result.get("values", [])
 
+        # Skip the first record since it just the title of the table in the sheet
         final_result = []
         for item in values[1:]:
             final_result.append(dict(zip(values[0], item)))
 
+        # We want to convert ints and floats when possible
         for item in final_result:
             for key, value in item.items():
                 try:
                     item[key] = int(value)
                 except ValueError:
-                    item[key] = value
+                    try:
+                        item[key] = float(value)
+                    except ValueError:
+                        item[key] = value
 
         return final_result

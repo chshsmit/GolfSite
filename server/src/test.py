@@ -1,28 +1,9 @@
-from flask import Flask, jsonify
+import re
 
-from DataRanges import DataRanges
-from GoogleAuthenticator import GoogleAuthenticator
-from GoogleSheetsAccessor import GoogleSheetsAccessor
+base_str = "eagleCrest"
 
-app = Flask(__name__)
+print("Base", base_str)
 
+res_list = [s for s in re.split("([A-Z][^A-Z]*)", base_str) if s]
 
-google_auth = GoogleAuthenticator()
-SheetsAccessor = GoogleSheetsAccessor()
-
-
-@app.route("/home", methods=["GET"])
-def home():
-
-    print(DataRanges.FULL_COURSES)
-
-    data = SheetsAccessor.get_data_for_range(
-        credentials=google_auth.credentials,
-        range=DataRanges.OVER_UNDER_FULL_PROGRESSION.value,
-    )
-
-    return jsonify(data), 200
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
+print("Result", " ".join(res_list).title())
