@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description
  * @created 2020-09-16T14:43:33.968Z-07:00
- * @last-modified 2020-09-16T17:18:37.638Z-07:00
+ * @last-modified 2020-09-17T22:01:18.792Z-07:00
  */
 
 import React from "react";
@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     formControl: {
       margin: theme.spacing(1),
-      minWidth: 120,
+      minWidth: 200,
     },
     selectEmpty: {
       marginTop: theme.spacing(2),

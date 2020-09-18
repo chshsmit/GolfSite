@@ -1,13 +1,8 @@
 import React from "react";
-import { Container } from "@material-ui/core";
-import Graph from "./components/Graph/Graph";
+import HomePage from "pages/HomePage/HomePage";
 
 function App(): React.ReactElement {
-  return (
-    <Container>
-      <Graph />
-    </Container>
-  );
+  return <HomePage />;
 }
 
 export default App;
