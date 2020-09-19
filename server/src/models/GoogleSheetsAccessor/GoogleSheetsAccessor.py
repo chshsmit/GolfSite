@@ -3,7 +3,7 @@ GoogleSheetsAccessor.py
 @author Christopher Smith
 @description Access range of data from Google Sheets API
 @created 2020-09-14T15:29:20.508Z-07:00
-@last-modified 2020-09-18T13:02:40.125Z-07:00
+@last-modified 2020-09-18T22:51:04.619Z-07:00
 """
 
 from googleapiclient.discovery import build
@@ -35,7 +35,7 @@ class GoogleSheetsAccessor:
                     item[key] = int(value)
                 except ValueError:
                     try:
-                        item[key] = float(value)
+                        item[key] = round(float(value), 1)
                     except ValueError:
                         item[key] = value
 

@@ -3,7 +3,7 @@ sheets_routes.py
 @author Christopher Smith
 @description Routes to retrieve data from google sheets
 @created 2020-09-15T13:26:16.262Z-07:00
-@last-modified 2020-09-18T14:18:53.370Z-07:00
+@last-modified 2020-09-18T22:49:40.541Z-07:00
 """
 
 import json
@@ -14,6 +14,7 @@ from flask import Blueprint, jsonify
 from src.models.DataRanges.DataRanges import DataRanges
 from src.models.GoogleAuthenticator.GoogleAuthenticator import GoogleAuthenticator
 from src.models.GoogleSheetsAccessor.GoogleSheetsAccessor import GoogleSheetsAccessor
+from src.utils.utils import camel_case
 
 sheets = Blueprint("sheets", __name__)
 
@@ -21,7 +22,7 @@ GoogleAuth = GoogleAuthenticator()
 SheetsAccessor = GoogleSheetsAccessor()
 
 
-@sheets.route("/sheets/<wanted_data>", methods=["GET"])
+@sheets.route("/sheets/graphs/<wanted_data>", methods=["GET"])
 def sheets_data(wanted_data: str):
     """
     Decription:
@@ -52,17 +53,47 @@ def sheets_data(wanted_data: str):
     )
 
 
+@sheets.route("/sheets/homepageData", methods=["GET"])
+def homepage_data():
+    putting_info = {
+        camel_case(key): value
+        for key, value in SheetsAccessor.get_data_for_range(
+            credentials=GoogleAuth.credentials, range="Graphs!I6:L9"
+        )[1].items()
+    }
+
+    handicap_info = {
+        camel_case(key): value
+        for key, value in SheetsAccessor.get_data_for_range(
+            credentials=GoogleAuth.credentials, range="Graphs!N6:Q9"
+        )[1].items()
+    }
+
+    last_three_rounds = SheetsAccessor.get_data_for_range(
+        credentials=GoogleAuth.credentials, range=DataRanges.FULL_COURSES.value["range"]
+    )[-3:]
+
+    return (
+        jsonify(
+            {
+                "putting": putting_info,
+                "handicap": handicap_info,
+                "lastThree": last_three_rounds,
+            }
+        ),
+        200,
+    )
+
+
 @sheets.route("/sheets/courses", methods=["GET"])
 def all_courses():
     all_course_info = course_info()
-
     return jsonify(all_course_info), 200
 
 
 @sheets.route("/sheets/courses/<course>", methods=["GET"])
 def single_course(course):
     single_course_info = course_info(course)
-
     return jsonify(single_course_info), 200
 
 
