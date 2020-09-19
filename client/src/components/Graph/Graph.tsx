@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description Main Graph component
  * @created 2020-09-16T13:54:38.707Z-07:00
- * @last-modified 2020-09-17T22:04:52.588Z-07:00
+ * @last-modified 2020-09-18T17:16:07.856Z-07:00
  */
 
 import React, { useState, useEffect } from "react";
@@ -15,7 +15,6 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  ResponsiveContainer,
 } from "recharts";
 import CustomTooltip from "components/Graph/CustomTooltip";
 

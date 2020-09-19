@@ -4,7 +4,7 @@
  * @description The nav bar at the top of the screen
  * @created 2020-09-18T16:09:34.683Z-07:00
  * @copyright
- * @last-modified 2020-09-18T16:49:19.855Z-07:00
+ * @last-modified 2020-09-18T17:38:01.726Z-07:00
  */
 
 import React, { useState } from "react";
