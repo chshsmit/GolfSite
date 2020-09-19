@@ -3,7 +3,7 @@ sheets_routes_utils.py
 @author Christopher Smith
 @description Utility functions for sheets routes
 @created 2020-09-19T14:11:42.668Z-07:00
-@last-modified 2020-09-19T14:20:06.339Z-07:00
+@last-modified 2020-09-19T15:02:23.243Z-07:00
 """
 
 import re
@@ -71,7 +71,9 @@ def all_round_data(wanted_course="noCourseProvided"):
             new_round["overUnder"][camel_case(key)] = int(over_under)
             new_round["putts"][camel_case(key)] = int(putts)
             new_round["penalties"][camel_case(key)] = int(penalties) if penalties else 0
-            new_round["gir"][camel_case(key)] = gir
+            new_round["gir"][camel_case(key)] = (
+                gir if camel_case(key) not in ["total", "in", "out"] else int(gir)
+            )
 
         all_rounds[
             f"{new_round['date']}-{camel_case(new_round['course'])}-{new_round['strokes']['total']}"
