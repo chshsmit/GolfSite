@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description
  * @created 2020-09-17T21:41:29.992Z-07:00
- * @last-modified 2020-09-19T11:36:41.157Z-07:00
+ * @last-modified 2020-09-19T15:52:25.756Z-07:00
  */
 
 import React, { useState, useEffect } from "react";
@@ -22,6 +22,10 @@ const homepageStyles = makeStyles({
   },
   lastThreeRoundsContainer: {
     marginTop: "2%",
+  },
+  lastThreeRoundsTitle: {
+    marginLeft: "2%",
+    marginBottom: "2%",
   },
 });
 
@@ -70,7 +74,9 @@ const HomePage = (): React.ReactElement => {
           justify="space-around"
         >
           <Grid item xs={12}>
-            <h1>Last Three Rounds</h1>
+            <h1 className={classes.lastThreeRoundsTitle}>
+              <u>Last Three Rounds</u>
+            </h1>
           </Grid>
           {homePageData.lastThree.map((round) => {
             console.log(round);

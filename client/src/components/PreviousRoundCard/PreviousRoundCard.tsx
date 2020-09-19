@@ -3,36 +3,51 @@
  * @author Christopher Smith
  * @description Card to show information for a previous round
  * @created 2020-09-19T10:22:42.318Z-07:00
- * @last-modified 2020-09-19T15:49:21.226Z-07:00
+ * @last-modified 2020-09-19T16:41:33.263Z-07:00
  */
 
+//---------------------------------------------------------------------------------------------------
+
 import React, { useEffect, useState } from "react";
+import clsx from "clsx";
 
 import {
   Card,
-  CardHeader,
-  Avatar,
   IconButton,
-  CardContent,
-  Typography,
   CircularProgress,
+  CardActions,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import { BaseRound, SingleRoundData } from "types/ApiResponseTypes";
 
-import PreviousRoundCardMenu from "components/PreviousRoundCard/PreviousRoundCardMenu";
-import { reformatDate, makeCamelCase } from "utils/utils";
+import PreviousRoundCardHeader from "components/PreviousRoundCard/PreviousRoundCardHeader";
+import PreviousRoundCardContent from "components/PreviousRoundCard/PreviousRoundCardContent";
+import PreviousRoundCardActions from "components/PreviousRoundCard/PreviousRoundCardActions";
+import { makeCamelCase } from "utils/utils";
 
-const previousRoundCardStyles = makeStyles({
-  root: {
-    minWidth: "20%",
-  },
-  scoreContent: {
-    textAlign: "center",
-  },
-});
+//---------------------------------------------------------------------------------------------------
+
+const previousRoundCardStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      minWidth: "20%",
+    },
+    expand: {
+      transform: "rotate(0deg)",
+      marginLeft: "auto",
+      transition: theme.transitions.create("transform", {
+        duration: theme.transitions.duration.shortest,
+      }),
+    },
+    expandOpen: {
+      transform: "rotate(180deg)",
+    },
+  })
+);
+
+//---------------------------------------------------------------------------------------------------
 
 const PreviousRoundCard = ({
   date,
@@ -41,20 +56,13 @@ const PreviousRoundCard = ({
   score,
 }: BaseRound): React.ReactElement => {
   const classes = previousRoundCardStyles();
-
   const [roundData, setRoundData] = useState<SingleRoundData | null>(null);
-  const [menuAnchorElement, setAnchorElement] = useState<HTMLElement | null>(
-    null
-  );
 
-  const openMenu = (event: React.MouseEvent<HTMLElement>): void => {
-    setAnchorElement(event.currentTarget);
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
   };
-
-  const handleMenuClose = () => {
-    setAnchorElement(null);
-  };
-
   useEffect(() => {
     fetch(
       `http://127.0.0.1:5000/sheets/roundData/${makeCamelCase(
@@ -67,47 +75,16 @@ const PreviousRoundCard = ({
       });
   }, []);
 
-  console.log(roundData);
+  console.log(expanded);
 
   return roundData ? (
     <Card className={classes.root}>
-      <CardHeader
-        avatar={(
-          <Avatar aria-label="round">
-            {course
-              .match(/\b(\w)/g)
-              ?.slice(0, 2)
-              .join("")}
-          </Avatar>
-        )}
-        action={(
-          <>
-            <IconButton aria-label="more-round-info" onClick={openMenu}>
-              <MoreVertIcon />
-            </IconButton>
-            <PreviousRoundCardMenu
-              anchorElement={menuAnchorElement}
-              onClose={handleMenuClose}
-            />
-          </>
-        )}
-        title={course}
-        subheader={reformatDate(date, "-")}
+      <PreviousRoundCardHeader course={course} par={par} date={date} />
+      <PreviousRoundCardContent
+        score={score}
+        totalOverUnder={roundData.overUnder.total}
       />
-      <CardContent className={classes.scoreContent}>
-        <Typography variant="h4">
-          <b>
-            <u>Score</u>
-          </b>
-        </Typography>
-        <Typography variant="h5">{score}</Typography>
-        <Typography variant="h4">
-          <b>
-            <u>Over/Under</u>
-          </b>
-        </Typography>
-        <Typography variant="h5">{roundData.overUnder.total}</Typography>
-      </CardContent>
+      <PreviousRoundCardActions />
     </Card>
   ) : (
     <CircularProgress />
