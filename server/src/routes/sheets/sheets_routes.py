@@ -3,7 +3,7 @@ sheets_routes.py
 @author Christopher Smith
 @description Routes to retrieve data from google sheets
 @created 2020-09-15T13:26:16.262Z-07:00
-@last-modified 2020-09-18T22:49:40.541Z-07:00
+@last-modified 2020-09-19T11:28:53.621Z-07:00
 """
 
 import json
@@ -56,14 +56,14 @@ def sheets_data(wanted_data: str):
 @sheets.route("/sheets/homepageData", methods=["GET"])
 def homepage_data():
     putting_info = {
-        camel_case(key): value
+        key: value
         for key, value in SheetsAccessor.get_data_for_range(
             credentials=GoogleAuth.credentials, range="Graphs!I6:L9"
         )[1].items()
     }
 
     handicap_info = {
-        camel_case(key): value
+        key: value
         for key, value in SheetsAccessor.get_data_for_range(
             credentials=GoogleAuth.credentials, range="Graphs!N6:Q9"
         )[1].items()

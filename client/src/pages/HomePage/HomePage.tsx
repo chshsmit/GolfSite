@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description
  * @created 2020-09-17T21:41:29.992Z-07:00
- * @last-modified 2020-09-19T11:01:59.781Z-07:00
+ * @last-modified 2020-09-19T11:15:14.719Z-07:00
  */
 
 import React, { useState, useEffect } from "react";
@@ -42,10 +42,10 @@ const HomePage = (): React.ReactElement => {
       >
         {homePageData ? (
           <>
-            <Grid direction="row" item xs={3}>
+            <Grid item xs={3}>
               <PuttingHomeCard {...homePageData.putting} />
             </Grid>
-            <Grid item xs={3} justify="center">
+            <Grid item xs={3}>
               <HandicapHomeCard {...homePageData.handicap} />
             </Grid>
           </>
@@ -66,7 +66,8 @@ const HomePage = (): React.ReactElement => {
             console.log(round);
             return (
               <PreviousRoundCard
-                key={`${round.Date}-${round.Course}-${round.Score}`}
+                {...round}
+                key={`${round.date}-${round.course}-${round.score}`}
               />
             );
           })}

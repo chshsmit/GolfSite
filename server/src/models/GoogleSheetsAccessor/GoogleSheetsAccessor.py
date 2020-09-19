@@ -3,10 +3,12 @@ GoogleSheetsAccessor.py
 @author Christopher Smith
 @description Access range of data from Google Sheets API
 @created 2020-09-14T15:29:20.508Z-07:00
-@last-modified 2020-09-18T22:51:04.619Z-07:00
+@last-modified 2020-09-19T11:29:11.454Z-07:00
 """
 
 from googleapiclient.discovery import build
+
+from src.utils.utils import camel_case
 
 
 class GoogleSheetsAccessor:
@@ -25,8 +27,10 @@ class GoogleSheetsAccessor:
 
         # Skip the first record since it just the title of the table in the sheet
         final_result = []
+        response_keys = [camel_case(item.replace("/", " ")) for item in values[0]]
+
         for item in values[1:]:
-            final_result.append(dict(zip(values[0], item)))
+            final_result.append(dict(zip(response_keys, item)))
 
         # We want to convert ints and floats when possible
         for item in final_result:
