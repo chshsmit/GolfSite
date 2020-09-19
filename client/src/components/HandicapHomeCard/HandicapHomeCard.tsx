@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description
  * @created 2020-09-19T10:10:43.777Z-07:00
- * @last-modified 2020-09-19T10:55:00.567Z-07:00
+ * @last-modified 2020-09-19T10:57:59.734Z-07:00
  */
 
 /**
@@ -16,9 +16,16 @@
 
 import React from "react";
 import { Card, CardContent, Typography } from "@material-ui/core";
-import { handicapCardStyles } from "components/HandicapHomeCard/HandicapHomeCardUtils";
+import { makeStyles } from "@material-ui/core/styles";
 
 import { HandicapReponseObject } from "api/ApiResponseInterfaces";
+
+const handicapCardStyles = makeStyles({
+  root: {
+    maxWidth: 275,
+    minHeight: 175,
+  },
+});
 
 const HandicapHomeCard = ({
   handicapDifferential,
