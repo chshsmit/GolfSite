@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description Card to show information for a previous round
  * @created 2020-09-19T10:22:42.318Z-07:00
- * @last-modified 2020-09-19T16:42:51.831Z-07:00
+ * @last-modified 2020-09-19T16:43:57.864Z-07:00
  */
 
 //---------------------------------------------------------------------------------------------------
@@ -48,7 +48,7 @@ const PreviousRoundCard = ({
       .then((response) => {
         setRoundData(response);
       });
-  }, []);
+  }, [course, date, score]);
 
   return roundData ? (
     <Card className={classes.root}>
