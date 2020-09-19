@@ -3,18 +3,27 @@
  * @author Christopher Smith
  * @description
  * @created 2020-09-17T21:41:29.992Z-07:00
- * @last-modified 2020-09-19T11:15:14.719Z-07:00
+ * @last-modified 2020-09-19T11:30:33.034Z-07:00
  */
 
 import React, { useState, useEffect } from "react";
 import { CircularProgress, Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
-import { homepageStyles } from "pages/HomePage/HomePageUtils";
 import { HomepageDataResponse } from "types/ApiResponseTypes";
 import MainNavBar from "components/MainNavBar/MainNavBar";
 import PuttingHomeCard from "components/PuttingHomeCard/PuttingHomeCard";
 import HandicapHomeCard from "components/HandicapHomeCard/HandicapHomeCard";
 import PreviousRoundCard from "components/PreviousRoundCard/PreviousRoundCard";
+
+const homepageStyles = makeStyles({
+  cardRow: {
+    marginTop: "2%",
+  },
+  lastThreeRoundsContainer: {
+    marginTop: "2%",
+  },
+});
 
 const HomePage = (): React.ReactElement => {
   const classes = homepageStyles();
