@@ -3,7 +3,7 @@ GoogleSheetsAccessor.py
 @author Christopher Smith
 @description Access range of data from Google Sheets API
 @created 2020-09-14T15:29:20.508Z-07:00
-@last-modified 2020-09-19T11:29:11.454Z-07:00
+@last-modified 2020-09-19T13:39:29.024Z-07:00
 """
 
 from googleapiclient.discovery import build
@@ -44,3 +44,15 @@ class GoogleSheetsAccessor:
                         item[key] = value
 
         return final_result
+
+    def get_raw_data_for_range(self, credentials, range) -> list:
+        service = build("sheets", "v4", credentials=credentials)
+
+        # Call the sheets api
+        sheet = service.spreadsheets()
+        result = (
+            sheet.values().get(spreadsheetId=self.spreadsheet_id, range=range).execute()
+        )
+        values = result.get("values", [])
+
+        return values

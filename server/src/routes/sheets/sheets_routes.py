@@ -3,17 +3,17 @@ sheets_routes.py
 @author Christopher Smith
 @description Routes to retrieve data from google sheets
 @created 2020-09-15T13:26:16.262Z-07:00
-@last-modified 2020-09-19T11:28:53.621Z-07:00
+@last-modified 2020-09-19T14:21:42.464Z-07:00
 """
 
-import json
 import re
 
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 
 from src.models.DataRanges.DataRanges import DataRanges
 from src.models.GoogleAuthenticator.GoogleAuthenticator import GoogleAuthenticator
 from src.models.GoogleSheetsAccessor.GoogleSheetsAccessor import GoogleSheetsAccessor
+from src.routes.sheets.sheets_routes_utils import all_round_data, course_info
 from src.utils.utils import camel_case
 
 sheets = Blueprint("sheets", __name__)
@@ -85,6 +85,26 @@ def homepage_data():
     )
 
 
+@sheets.route("/sheets/roundData", methods=["GET"])
+def round_data():
+    all_rounds = all_round_data()
+    return jsonify(list(all_rounds.values())), 200
+
+
+@sheets.route("/sheets/roundData/<wanted_course>")
+def single_round_data(wanted_course: str):
+    wanted_date = request.args.get("date")
+    score = request.args.get("score")
+
+    try:
+        data_for_wanted_round = all_round_data(wanted_course=wanted_course)[
+            f"{wanted_date}-{wanted_course}-{score}"
+        ]
+        return jsonify(data_for_wanted_round), 200
+    except KeyError:
+        return jsonify({"error": "Sorry that round does not exist"}), 404
+
+
 @sheets.route("/sheets/courses", methods=["GET"])
 def all_courses():
     all_course_info = course_info()
@@ -94,65 +114,7 @@ def all_courses():
 @sheets.route("/sheets/courses/<course>", methods=["GET"])
 def single_course(course):
     single_course_info = course_info(course)
-    return jsonify(single_course_info), 200
-
-
-def course_info(wanted_course="noCourseProvided") -> dict:
-    all_course_sheet_data = SheetsAccessor.get_data_for_range(
-        credentials=GoogleAuth.credentials, range="Courses!A1:X"
+    return (
+        jsonify(single_course_info),
+        200 if "error" not in single_course_info else 404,
     )
-
-    course_iterator = iter([item for item in all_course_sheet_data if item])
-    all_course_info = {}
-
-    hole_pattern = re.compile("Hole*")
-
-    for course in course_iterator:
-        par_info = course
-        yardage_info = next(course_iterator)
-        handicap_info = next(course_iterator)
-
-        course_info = {
-            "slope": par_info["Slope"],
-            "name": par_info["Course Name"],
-            "parInfo": {},
-            "yardageInfo": {},
-            "handicapInfo": {},
-        }
-
-        for key in par_info.keys():
-            if hole_pattern.match(key):
-                hole_num = key.split(" ")[1]
-                course_info["parInfo"][f"hole{hole_num}Par"] = par_info[key]
-
-        course_info["parInfo"]["totalPar"] = par_info["Totals"]
-        course_info["parInfo"]["frontNine"] = par_info["OUT"]
-        course_info["parInfo"]["backNine"] = par_info["IN"]
-
-        for key in yardage_info.keys():
-            if hole_pattern.match(key):
-                hole_num = key.split(" ")[1]
-                course_info["yardageInfo"][f"hole{hole_num}Yardage"] = yardage_info[key]
-
-        course_info["parInfo"]["totalPar"] = yardage_info["Totals"]
-        course_info["parInfo"]["frontNine"] = yardage_info["OUT"]
-        course_info["parInfo"]["backNine"] = yardage_info["IN"]
-
-        for key in handicap_info.keys():
-            if hole_pattern.match(key):
-                hole_num = key.split(" ")[1]
-                course_info["handicapInfo"][f"hole{hole_num}Handicap"] = handicap_info[
-                    key
-                ]
-
-        all_course_info[par_info["Course Name"]] = course_info
-
-    if wanted_course != "noCourseProvided":
-        split_course_name = [s for s in re.split("([A-Z][^A-Z]*)", wanted_course) if s]
-        course_key = " ".join(split_course_name).title()
-        try:
-            return all_course_info[course_key]
-        except KeyError:
-            return {"error": f"Invalid course: {wanted_course} provided"}
-    else:
-        return all_course_info
