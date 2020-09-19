@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description Main Graph component
  * @created 2020-09-16T13:54:38.707Z-07:00
- * @last-modified 2020-09-18T17:16:07.856Z-07:00
+ * @last-modified 2020-09-18T17:58:46.576Z-07:00
  */
 
 import React, { useState, useEffect } from "react";
@@ -17,6 +17,7 @@ import {
   Tooltip,
 } from "recharts";
 import CustomTooltip from "components/Graph/CustomTooltip";
+import { CircularProgress, LinearProgress } from "@material-ui/core";
 
 interface GraphProps {
   graphOption: string;
@@ -25,22 +26,21 @@ interface GraphProps {
 const Graph = ({ graphOption }: GraphProps): React.ReactElement => {
   const [graphData, setGraphData] = useState([]);
   const [axes, setAxes] = useState({ xAxis: "", yAxis: "" });
+  const [dataLoading, setDataLoading] = useState(false);
 
   useEffect(() => {
-    if (graphOption !== "") {
-      fetch(`http://127.0.0.1:5000/sheets/${graphOption}`)
-        .then((res) => res.json())
-        .then((response) => {
-          setAxes(response.axisData);
-          setGraphData(response.graphData);
-        });
-    }
+    setDataLoading(true);
+    fetch(`http://127.0.0.1:5000/sheets/${graphOption}`)
+      .then((res) => res.json())
+      .then((response) => {
+        setAxes(response.axisData);
+        setGraphData(response.graphData);
+        setDataLoading(false);
+      });
   }, [graphOption]);
 
-  return graphOption === "" ? (
-    <div>
-      <p>Please select an option</p>
-    </div>
+  return dataLoading ? (
+    <CircularProgress />
   ) : (
     <LineChart
       width={800}

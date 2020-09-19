@@ -4,7 +4,7 @@
  * @description
  * @created 2020-09-18T17:40:43.966Z-07:00
  * @copyright
- * @last-modified 2020-09-18T17:45:30.882Z-07:00
+ * @last-modified 2020-09-18T17:55:46.307Z-07:00
  */
 
 import React, { useState, useEffect } from "react";
@@ -21,7 +21,9 @@ const PlayData = (): React.ReactElement => {
   useEffect(() => {
     fetch("http://127.0.0.1:5000/options/graph")
       .then((res) => res.json())
-      .then((response) => setGraphOptions(response));
+      .then((response) => {
+        setGraphOptions(response);
+      });
   }, []);
 
   return (
@@ -42,7 +44,11 @@ const PlayData = (): React.ReactElement => {
           />
         </Grid>
         <Grid item>
-          <Graph graphOption={graphOption} />
+          {graphOption !== "" ? (
+            <Graph graphOption={graphOption} />
+          ) : (
+            <h3>Please select an option</h3>
+          )}
         </Grid>
       </Grid>
     </>
