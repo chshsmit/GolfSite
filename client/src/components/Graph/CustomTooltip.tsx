@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description custom tooltip for graph
  * @created 2020-09-17T16:19:42.149Z-07:00
- * @last-modified 2020-09-17T16:33:41.658Z-07:00
+ * @last-modified 2020-09-19T11:35:51.061Z-07:00
  */
 
 import React from "react";
@@ -15,8 +15,8 @@ const CustomTooltip = ({
 }: TooltipProps): React.ReactElement | null => {
   return active && payload ? (
     <div className="custom-tooltip">
-      <p>Course: {payload[0].payload.Course}</p>
-      <p>Par: {payload[0].payload.Par}</p>
+      <p>Course: {payload[0].payload.course}</p>
+      {payload[0].payload.par && <p>Par: {payload[0].payload.par}</p>}
     </div>
   ) : null;
 };

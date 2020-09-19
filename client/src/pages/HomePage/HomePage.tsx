@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description
  * @created 2020-09-17T21:41:29.992Z-07:00
- * @last-modified 2020-09-19T11:30:33.034Z-07:00
+ * @last-modified 2020-09-19T11:36:41.157Z-07:00
  */
 
 import React, { useState, useEffect } from "react";
@@ -67,6 +67,7 @@ const HomePage = (): React.ReactElement => {
           container
           direction="row"
           className={classes.lastThreeRoundsContainer}
+          justify="space-around"
         >
           <Grid item xs={12}>
             <h1>Last Three Rounds</h1>

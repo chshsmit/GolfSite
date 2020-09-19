@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description Card to show information for a previous round
  * @created 2020-09-19T10:22:42.318Z-07:00
- * @last-modified 2020-09-19T11:19:41.650Z-07:00
+ * @last-modified 2020-09-19T11:42:29.737Z-07:00
  */
 
 import React from "react";
@@ -11,6 +11,8 @@ import React from "react";
 import { Card, CardHeader, Avatar } from "@material-ui/core";
 
 import { BaseRound } from "types/ApiResponseTypes";
+
+import { reformatDate } from "utils/utils";
 
 const PreviousRoundCard = ({
   date,
@@ -29,6 +31,8 @@ const PreviousRoundCard = ({
               .join("")}
           </Avatar>
         )}
+        title={course}
+        subheader={reformatDate(date, "-")}
       />
     </Card>
   );
