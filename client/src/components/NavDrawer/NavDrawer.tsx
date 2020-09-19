@@ -3,18 +3,23 @@
  * @author Christopher Smith
  * @description Nav Drawer for links
  * @created 2020-09-18T16:26:36.420Z-07:00
- * @last-modified 2020-09-18T16:45:56.606Z-07:00
+ * @last-modified 2020-09-18T17:10:39.734Z-07:00
  */
 
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
+import React from "react";
+import {
+  Drawer,
+  List,
+  Divider,
+  ListItem,
+  ListItemText,
+  ListItemIcon,
+} from "@material-ui/core";
+
+import GraphicEqIcon from "@material-ui/icons/GraphicEq";
 import HomeIcon from "@material-ui/icons/Home";
+import GolfCourseIcon from "@material-ui/icons/GolfCourse";
+
 import {
   navDrawerStyles,
   NavDrawerProps,
@@ -34,6 +39,21 @@ const NavDrawer = ({
             <HomeIcon />
           </ListItemIcon>
           <ListItemText primary="Home" />
+        </ListItem>
+      </List>
+      <Divider />
+      <List>
+        <ListItem button>
+          <ListItemIcon>
+            <GraphicEqIcon />
+          </ListItemIcon>
+          <ListItemText primary="Data" />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <GolfCourseIcon />
+          </ListItemIcon>
+          <ListItemText primary="Courses" />
         </ListItem>
       </List>
 
