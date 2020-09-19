@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description Main Graph component
  * @created 2020-09-16T13:54:38.707Z-07:00
- * @last-modified 2020-09-18T17:58:46.576Z-07:00
+ * @last-modified 2020-09-18T17:59:40.553Z-07:00
  */
 
 import React, { useState, useEffect } from "react";
@@ -17,7 +17,7 @@ import {
   Tooltip,
 } from "recharts";
 import CustomTooltip from "components/Graph/CustomTooltip";
-import { CircularProgress, LinearProgress } from "@material-ui/core";
+import { CircularProgress } from "@material-ui/core";
 
 interface GraphProps {
   graphOption: string;
