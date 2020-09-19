@@ -1,9 +1,9 @@
 /**
- * ApiResponseInterfaces.tsx
+ * ApiResponseTypes.tsx
  * @author Christopher Smith
- * @description All interfaces for API Responses
- * @created 2020-09-18T23:05:21.104Z-07:00
- * @last-modified 2020-09-19T10:54:41.242Z-07:00
+ * @description Types from API responses
+ * @created 2020-09-19T10:59:48.624Z-07:00
+ * @last-modified 2020-09-19T11:00:16.190Z-07:00
  */
 
 export interface BaseRound {

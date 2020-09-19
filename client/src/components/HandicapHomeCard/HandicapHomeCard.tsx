@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description
  * @created 2020-09-19T10:10:43.777Z-07:00
- * @last-modified 2020-09-19T10:57:59.734Z-07:00
+ * @last-modified 2020-09-19T11:01:25.435Z-07:00
  */
 
 /**
@@ -18,7 +18,7 @@ import React from "react";
 import { Card, CardContent, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-import { HandicapReponseObject } from "api/ApiResponseInterfaces";
+import { HandicapReponseObject } from "types/ApiResponseTypes";
 
 const handicapCardStyles = makeStyles({
   root: {

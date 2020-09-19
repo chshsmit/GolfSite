@@ -3,14 +3,14 @@
  * @author Christopher Smith
  * @description
  * @created 2020-09-17T21:41:29.992Z-07:00
- * @last-modified 2020-09-19T10:49:17.626Z-07:00
+ * @last-modified 2020-09-19T11:01:59.781Z-07:00
  */
 
 import React, { useState, useEffect } from "react";
 import { CircularProgress, Grid } from "@material-ui/core";
 
 import { homepageStyles } from "pages/HomePage/HomePageUtils";
-import { HomepageDataResponse } from "api/ApiResponseInterfaces";
+import { HomepageDataResponse } from "types/ApiResponseTypes";
 import MainNavBar from "components/MainNavBar/MainNavBar";
 import PuttingHomeCard from "components/PuttingHomeCard/PuttingHomeCard";
 import HandicapHomeCard from "components/HandicapHomeCard/HandicapHomeCard";
