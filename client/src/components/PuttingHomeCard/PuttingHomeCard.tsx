@@ -3,14 +3,17 @@
  * @author Christopher Smith
  * @description Card that contains putting information
  * @created 2020-09-18T22:58:27.109Z-07:00
- * @last-modified 2020-09-19T11:01:46.339Z-07:00
+ * @last-modified 2020-09-19T16:46:58.978Z-07:00
  */
 
+//---------------------------------------------------------------------------------------------------
 import React from "react";
 import { Card, CardContent, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { PuttingResponseObject } from "types/ApiResponseTypes";
+
+//---------------------------------------------------------------------------------------------------
 
 export const puttingCardStyles = makeStyles({
   root: {
@@ -18,6 +21,8 @@ export const puttingCardStyles = makeStyles({
     minHeight: 175,
   },
 });
+
+//---------------------------------------------------------------------------------------------------
 
 const PuttingHomeCard = ({
   averagePuttsPerHole,

@@ -4,19 +4,23 @@
  * @description The nav bar at the top of the screen
  * @created 2020-09-18T16:09:34.683Z-07:00
  * @copyright
- * @last-modified 2020-09-18T17:38:01.726Z-07:00
+ * @last-modified 2020-09-19T16:46:00.295Z-07:00
  */
+
+//---------------------------------------------------------------------------------------------------
 
 import React, { useState } from "react";
 
 import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
+
 import {
   MainNavBarProps,
   mainNavBarStyles,
 } from "components/MainNavBar/MainNavBarUtils";
-import MenuIcon from "@material-ui/icons/Menu";
-
 import NavDrawer from "components/NavDrawer/NavDrawer";
+
+//---------------------------------------------------------------------------------------------------
 
 const MainNavBar = ({ currentScreen }: MainNavBarProps): React.ReactElement => {
   const classes = mainNavBarStyles();

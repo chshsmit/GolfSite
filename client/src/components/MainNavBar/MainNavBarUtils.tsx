@@ -4,10 +4,14 @@
  * @description Interface and styles
  * @created 2020-09-18T16:21:52.785Z-07:00
  * @copyright
- * @last-modified 2020-09-18T17:35:13.738Z-07:00
+ * @last-modified 2020-09-19T16:46:16.800Z-07:00
  */
 
+//---------------------------------------------------------------------------------------------------
+
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+
+//---------------------------------------------------------------------------------------------------
 
 export interface MainNavBarProps {
   currentScreen: string;

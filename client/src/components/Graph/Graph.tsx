@@ -3,8 +3,10 @@
  * @author Christopher Smith
  * @description Main Graph component
  * @created 2020-09-16T13:54:38.707Z-07:00
- * @last-modified 2020-09-18T22:28:49.982Z-07:00
+ * @last-modified 2020-09-19T16:45:02.871Z-07:00
  */
+
+//---------------------------------------------------------------------------------------------------
 
 import React, { useState, useEffect } from "react";
 
@@ -16,12 +18,17 @@ import {
   YAxis,
   Tooltip,
 } from "recharts";
-import CustomTooltip from "components/Graph/CustomTooltip";
 import { CircularProgress } from "@material-ui/core";
+
+import CustomTooltip from "components/Graph/CustomTooltip";
+
+//---------------------------------------------------------------------------------------------------
 
 interface GraphProps {
   graphOption: string;
 }
+
+//---------------------------------------------------------------------------------------------------
 
 const Graph = ({ graphOption }: GraphProps): React.ReactElement => {
   const [graphData, setGraphData] = useState([]);

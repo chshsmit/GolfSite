@@ -3,13 +3,17 @@
  * @author Christopher Smith
  * @description
  * @created 2020-09-16T14:43:33.968Z-07:00
- * @last-modified 2020-09-17T22:01:18.792Z-07:00
+ * @last-modified 2020-09-19T16:45:17.829Z-07:00
  */
+
+//---------------------------------------------------------------------------------------------------
 
 import React from "react";
 
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { MenuItem, Select, InputLabel, FormControl } from "@material-ui/core";
+
+//---------------------------------------------------------------------------------------------------
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -33,6 +37,8 @@ type GraphOptionSelectProps = {
   value: string;
   onChange: (value: string) => void;
 };
+
+//---------------------------------------------------------------------------------------------------
 
 const GraphOptionSelect = ({
   graphOptions,

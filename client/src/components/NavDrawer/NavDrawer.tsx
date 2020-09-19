@@ -3,10 +3,14 @@
  * @author Christopher Smith
  * @description Nav Drawer for links
  * @created 2020-09-18T16:26:36.420Z-07:00
- * @last-modified 2020-09-18T17:43:35.677Z-07:00
+ * @last-modified 2020-09-19T16:46:34.287Z-07:00
  */
 
+//---------------------------------------------------------------------------------------------------
+
 import React from "react";
+import { useHistory } from "react-router-dom";
+
 import {
   Drawer,
   List,
@@ -15,7 +19,6 @@ import {
   ListItemText,
   ListItemIcon,
 } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
 
 import GraphicEqIcon from "@material-ui/icons/GraphicEq";
 import HomeIcon from "@material-ui/icons/Home";
@@ -25,6 +28,8 @@ import {
   navDrawerStyles,
   NavDrawerProps,
 } from "components/NavDrawer/NavDrawerUtils";
+
+//---------------------------------------------------------------------------------------------------
 
 const NavDrawer = ({
   drawerIsOpen,
