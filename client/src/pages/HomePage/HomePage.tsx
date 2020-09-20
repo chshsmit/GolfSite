@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description
  * @created 2020-09-17T21:41:29.992Z-07:00
- * @last-modified 2020-09-20T11:12:35.175Z-07:00
+ * @last-modified 2020-09-20T12:21:34.647Z-07:00
  */
 
 //---------------------------------------------------------------------------------------------------
@@ -26,6 +26,8 @@ const homepageStyles = makeStyles({
   },
   lastThreeRoundsContainer: {
     backgroundColor: "#FAFAFA",
+    width: "100%",
+    margin: "0px",
   },
   lastThreeRoundsTitle: {
     marginLeft: "2%",

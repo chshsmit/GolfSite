@@ -4,7 +4,7 @@
  * @description
  * @created 2020-09-20T11:13:59.721Z-07:00
  * @copyright
- * @last-modified 2020-09-20T11:17:00.683Z-07:00
+ * @last-modified 2020-09-20T11:33:54.136Z-07:00
  */
 
 //---------------------------------------------------------------------------------------------------
@@ -14,6 +14,8 @@ import React from "react";
 import { Collapse, CardContent, Typography } from "@material-ui/core";
 
 import { RoundCategoryNumberData } from "types/ApiResponseTypes";
+
+import PreviousRoundCardTable from "components/PreviousRoundCard/PreviousRoundCardTable";
 
 //---------------------------------------------------------------------------------------------------
 
@@ -33,7 +35,7 @@ const PreviousRoundCardCollapse = ({
   return (
     <Collapse in={expanded} timeout="auto" unmountOnExit>
       <CardContent>
-        <Typography paragraph>Here is an example</Typography>
+        <PreviousRoundCardTable strokesInfo={strokesInfo} parInfo={parInfo} />
       </CardContent>
     </Collapse>
   );

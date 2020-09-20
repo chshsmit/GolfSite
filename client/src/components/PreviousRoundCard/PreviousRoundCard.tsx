@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description Card to show information for a previous round
  * @created 2020-09-19T10:22:42.318Z-07:00
- * @last-modified 2020-09-20T11:22:22.515Z-07:00
+ * @last-modified 2020-09-20T12:23:29.594Z-07:00
  */
 
 //---------------------------------------------------------------------------------------------------
@@ -57,6 +57,7 @@ const PreviousRoundCard = ({
       <PreviousRoundCardContent
         score={score}
         totalOverUnder={roundData.overUnder.total}
+        courseName={makeCamelCase(course)}
       />
       <PreviousRoundCardActions
         strokesInfo={roundData.strokes}
