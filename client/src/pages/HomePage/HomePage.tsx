@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description
  * @created 2020-09-17T21:41:29.992Z-07:00
- * @last-modified 2020-09-19T16:47:27.225Z-07:00
+ * @last-modified 2020-09-20T11:12:35.175Z-07:00
  */
 
 //---------------------------------------------------------------------------------------------------
@@ -25,7 +25,7 @@ const homepageStyles = makeStyles({
     marginTop: "2%",
   },
   lastThreeRoundsContainer: {
-    marginTop: "2%",
+    backgroundColor: "#FAFAFA",
   },
   lastThreeRoundsTitle: {
     marginLeft: "2%",
@@ -56,45 +56,34 @@ const HomePage = (): React.ReactElement => {
       <Grid
         container
         direction="row"
-        justify="space-around"
-        className={classes.cardRow}
+        className={classes.lastThreeRoundsContainer}
+        justify="center"
+        spacing={2}
       >
         {homePageData ? (
           <>
-            <Grid item xs={3}>
-              <PuttingHomeCard {...homePageData.putting} />
+            <Grid item xs={12}>
+              <h1 className={classes.lastThreeRoundsTitle}>
+                <u>Last Three Rounds</u>
+              </h1>
             </Grid>
-            <Grid item xs={3}>
-              <HandicapHomeCard {...homePageData.handicap} />
-            </Grid>
+            {homePageData.lastThree.map((round) => {
+              console.log(round);
+              return (
+                <Grid
+                  xs={4}
+                  item
+                  key={`${round.date}-${round.course}-${round.score}`}
+                >
+                  <PreviousRoundCard {...round} />
+                </Grid>
+              );
+            })}
           </>
         ) : (
           <CircularProgress />
         )}
       </Grid>
-      {homePageData ? (
-        <Grid
-          container
-          direction="row"
-          className={classes.lastThreeRoundsContainer}
-          justify="space-around"
-        >
-          <Grid item xs={12}>
-            <h1 className={classes.lastThreeRoundsTitle}>
-              <u>Last Three Rounds</u>
-            </h1>
-          </Grid>
-          {homePageData.lastThree.map((round) => {
-            console.log(round);
-            return (
-              <PreviousRoundCard
-                {...round}
-                key={`${round.date}-${round.course}-${round.score}`}
-              />
-            );
-          })}
-        </Grid>
-      ) : null}
     </>
   );
 };
