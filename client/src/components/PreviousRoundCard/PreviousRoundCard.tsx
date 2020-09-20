@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description Card to show information for a previous round
  * @created 2020-09-19T10:22:42.318Z-07:00
- * @last-modified 2020-09-19T16:43:57.864Z-07:00
+ * @last-modified 2020-09-20T11:22:22.515Z-07:00
  */
 
 //---------------------------------------------------------------------------------------------------
@@ -17,6 +17,7 @@ import { BaseRound, SingleRoundData } from "types/ApiResponseTypes";
 import PreviousRoundCardHeader from "components/PreviousRoundCard/PreviousRoundCardHeader";
 import PreviousRoundCardContent from "components/PreviousRoundCard/PreviousRoundCardContent";
 import PreviousRoundCardActions from "components/PreviousRoundCard/PreviousRoundCardActions";
+
 import { makeCamelCase } from "utils/utils";
 
 //---------------------------------------------------------------------------------------------------
@@ -57,7 +58,10 @@ const PreviousRoundCard = ({
         score={score}
         totalOverUnder={roundData.overUnder.total}
       />
-      <PreviousRoundCardActions />
+      <PreviousRoundCardActions
+        strokesInfo={roundData.strokes}
+        parInfo={roundData.par}
+      />
     </Card>
   ) : (
     <CircularProgress />
