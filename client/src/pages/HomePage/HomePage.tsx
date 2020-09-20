@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description
  * @created 2020-09-17T21:41:29.992Z-07:00
- * @last-modified 2020-09-20T12:21:34.647Z-07:00
+ * @last-modified 2020-09-20T12:43:45.815Z-07:00
  */
 
 //---------------------------------------------------------------------------------------------------
@@ -14,8 +14,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import { HomepageDataResponse } from "types/ApiResponseTypes";
 import MainNavBar from "components/MainNavBar/MainNavBar";
-import PuttingHomeCard from "components/PuttingHomeCard/PuttingHomeCard";
-import HandicapHomeCard from "components/HandicapHomeCard/HandicapHomeCard";
+// import PuttingHomeCard from "components/PuttingHomeCard/PuttingHomeCard";
+// import HandicapHomeCard from "components/HandicapHomeCard/HandicapHomeCard";
 import PreviousRoundCard from "components/PreviousRoundCard/PreviousRoundCard";
 
 //---------------------------------------------------------------------------------------------------
@@ -31,7 +31,6 @@ const homepageStyles = makeStyles({
   },
   lastThreeRoundsTitle: {
     marginLeft: "2%",
-    marginBottom: "2%",
   },
 });
 

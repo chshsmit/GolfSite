@@ -4,14 +4,14 @@
  * @description
  * @created 2020-09-20T11:13:59.721Z-07:00
  * @copyright
- * @last-modified 2020-09-20T11:33:54.136Z-07:00
+ * @last-modified 2020-09-20T12:41:28.609Z-07:00
  */
 
 //---------------------------------------------------------------------------------------------------
 
 import React from "react";
 
-import { Collapse, CardContent, Typography } from "@material-ui/core";
+import { Collapse, CardContent } from "@material-ui/core";
 
 import { RoundCategoryNumberData } from "types/ApiResponseTypes";
 
