@@ -3,13 +3,12 @@ sheets_routes.py
 @author Christopher Smith
 @description Routes to retrieve data from google sheets
 @created 2020-09-15T13:26:16.262Z-07:00
-@last-modified 2020-09-19T14:21:42.464Z-07:00
+@last-modified 2020-09-24T14:10:09.167Z-07:00
 """
 
 import re
 
 from flask import Blueprint, jsonify, request
-
 from src.models.DataRanges.DataRanges import DataRanges
 from src.models.GoogleAuthenticator.GoogleAuthenticator import GoogleAuthenticator
 from src.models.GoogleSheetsAccessor.GoogleSheetsAccessor import GoogleSheetsAccessor
@@ -46,6 +45,7 @@ def sheets_data(wanted_data: str):
                 "axisData": {
                     "xAxis": range_data.value["xAxis"],
                     "yAxis": range_data.value["yAxis"],
+                    "legendName": range_data.value["legendName"],
                 },
             }
         ),

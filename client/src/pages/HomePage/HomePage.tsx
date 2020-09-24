@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description
  * @created 2020-09-17T21:41:29.992Z-07:00
- * @last-modified 2020-09-20T12:43:45.815Z-07:00
+ * @last-modified 2020-09-24T14:23:16.978Z-07:00
  */
 
 //---------------------------------------------------------------------------------------------------
@@ -50,6 +50,8 @@ const HomePage = (): React.ReactElement => {
         setHomePageData(response);
       });
   }, []);
+
+  console.log(homePageData);
 
   return (
     <>

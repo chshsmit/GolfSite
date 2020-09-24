@@ -3,7 +3,7 @@ DataRanges.py
 @author Christopher Smith
 @description Ranges of data in the spreadsheet
 @created 2020-09-14T15:39:27.987Z-07:00
-@last-modified 2020-09-19T11:13:36.484Z-07:00
+@last-modified 2020-09-24T14:09:43.248Z-07:00
 """
 
 from enum import Enum
@@ -16,6 +16,7 @@ class DataRanges(Enum):
         "label": "Full Courses",
         "xAxis": "date",
         "yAxis": "score",
+        "legendName": "Score",
     }
 
     EXECUTIVE_COURSES = {
@@ -24,6 +25,7 @@ class DataRanges(Enum):
         "label": "Executive Courses",
         "xAxis": "date",
         "yAxis": "score",
+        "legendName": "Score",
     }
 
     OVER_UNDER_FULL_PROGRESSION = {
@@ -32,6 +34,7 @@ class DataRanges(Enum):
         "label": "Over/Under Full Progression",
         "xAxis": "date",
         "yAxis": "overUnder",
+        "legendName": "Over Under",
     }
 
     OVER_UNDER_EXECUTIVE_PROGRESSION = {
@@ -40,6 +43,7 @@ class DataRanges(Enum):
         "label": "Over/Under Executive Progression",
         "xAxis": "date",
         "yAxis": "overUnder",
+        "legendName": "Over Under",
     }
 
     OVER_UNDER_OVERALL = {
@@ -48,6 +52,7 @@ class DataRanges(Enum):
         "label": "Over/Under Overall",
         "xAxis": "date",
         "yAxis": "overUnder",
+        "legendName": "Over Under",
     }
 
     HDCP_DIFF_PER_ROUND = {
@@ -56,6 +61,7 @@ class DataRanges(Enum):
         "label": "Handicap Per Round",
         "xAxis": "date",
         "yAxis": "differential",
+        "legendName": "Differential",
     }
 
     @classmethod

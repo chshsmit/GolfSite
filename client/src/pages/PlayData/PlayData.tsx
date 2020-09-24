@@ -4,7 +4,7 @@
  * @description
  * @created 2020-09-18T17:40:43.966Z-07:00
  * @copyright
- * @last-modified 2020-09-19T16:47:35.942Z-07:00
+ * @last-modified 2020-09-24T14:31:04.229Z-07:00
  */
 
 //---------------------------------------------------------------------------------------------------
@@ -47,13 +47,20 @@ const PlayData = (): React.ReactElement => {
             graphOptions={graphOptions}
           />
         </Grid>
-        <Grid item>
+        {graphOption !== "" ? (
+          <Graph graphOption={graphOption} />
+        ) : (
+          <Grid item>
+            <h3>Please select an option</h3>
+          </Grid>
+        )}
+        {/* <Grid item>
           {graphOption !== "" ? (
             <Graph graphOption={graphOption} />
           ) : (
             <h3>Please select an option</h3>
           )}
-        </Grid>
+        </Grid> */}
       </Grid>
     </>
   );
