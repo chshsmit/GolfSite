@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description Nav Drawer for links
  * @created 2020-09-18T16:26:36.420Z-07:00
- * @last-modified 2020-09-19T16:46:34.287Z-07:00
+ * @last-modified 2020-09-25T14:45:28.519Z-07:00
  */
 
 //---------------------------------------------------------------------------------------------------
@@ -23,6 +23,7 @@ import {
 import GraphicEqIcon from "@material-ui/icons/GraphicEq";
 import HomeIcon from "@material-ui/icons/Home";
 import GolfCourseIcon from "@material-ui/icons/GolfCourse";
+import SportsGolfIcon from "@material-ui/icons/SportsGolf";
 
 import {
   navDrawerStyles,
@@ -61,6 +62,12 @@ const NavDrawer = ({
             <GolfCourseIcon />
           </ListItemIcon>
           <ListItemText primary="Courses" />
+        </ListItem>
+        <ListItem button onClick={() => history.push("/rounds")}>
+          <ListItemIcon>
+            <SportsGolfIcon />
+          </ListItemIcon>
+          <ListItemText primary="Rounds" />
         </ListItem>
       </List>
 

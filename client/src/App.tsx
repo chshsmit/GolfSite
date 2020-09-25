@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "pages/HomePage/HomePage";
 import Courses from "pages/Courses/Courses";
 import PlayData from "pages/PlayData/PlayData";
+import Rounds from "pages/Rounds/Rounds";
 
 const App = (): React.ReactElement => (
   <Router>
@@ -17,6 +18,9 @@ const App = (): React.ReactElement => (
       </Route>
       <Route exact path="/play-data">
         <PlayData />
+      </Route>
+      <Route exact path="/rounds">
+        <Rounds />
       </Route>
     </Switch>
   </Router>
