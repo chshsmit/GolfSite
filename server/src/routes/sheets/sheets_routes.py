@@ -3,7 +3,7 @@ sheets_routes.py
 @author Christopher Smith
 @description Routes to retrieve data from google sheets
 @created 2020-09-15T13:26:16.262Z-07:00
-@last-modified 2020-09-24T14:10:09.167Z-07:00
+@last-modified 2020-09-25T14:48:17.231Z-07:00
 """
 
 import re
@@ -89,6 +89,12 @@ def homepage_data():
 def round_data():
     all_rounds = all_round_data()
     return jsonify(list(all_rounds.values())), 200
+
+
+@sheets.route("/sheets/roundOptions", methods=["GET"])
+def round_options():
+    all_rounds = all_round_data()
+    return jsonify(list(all_rounds.keys())), 200
 
 
 @sheets.route("/sheets/roundData/<wanted_course>")

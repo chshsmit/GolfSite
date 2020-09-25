@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description Utility Functions
  * @created 2020-09-19T11:39:05.426Z-07:00
- * @last-modified 2020-09-19T14:44:48.305Z-07:00
+ * @last-modified 2020-09-25T15:01:30.147Z-07:00
  */
 
 /**
@@ -27,4 +27,10 @@ export function makeCamelCase(str: string): string {
       return index === 0 ? word.toLowerCase() : word.toUpperCase();
     })
     .replace(/\s+/g, "");
+}
+
+export function makeRegularCase(str: string): string {
+  const baseResult = str.replace(/([A-Z])/g, " $1");
+
+  return baseResult.charAt(0).toUpperCase() + baseResult.slice(1);
 }
