@@ -4,7 +4,7 @@
  * @description
  * @created 2020-09-25T14:43:31.365Z-07:00
  * @copyright
- * @last-modified 2020-09-25T15:19:15.350Z-07:00
+ * @last-modified 2020-09-30T14:02:11.359Z-07:00
  */
 
 //---------------------------------------------------------------------------------------------------
@@ -17,10 +17,12 @@ import {
   MenuItem,
   InputLabel,
   FormControl,
+  CircularProgress,
 } from "@material-ui/core";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
 import MainNavBar from "components/MainNavBar/MainNavBar";
+import RoundTable from "components/RoundTable/RoundTable";
 
 import { makeRegularCase, reformatDate } from "utils/utils";
 
@@ -44,6 +46,7 @@ interface RoundsProps {
 const Rounds = ({ round = "" }: RoundsProps): React.ReactElement => {
   const classes = roundsStyles();
   const [roundOptions, setRoundOptions] = useState([]);
+  const [roundDataLoading, setRoundDataLoading] = useState(false);
   const [selectedRound, changeSelectedRound] = useState(round);
   const [selectedRoundData, setSelectedRoundData] = useState(null);
 
@@ -57,10 +60,12 @@ const Rounds = ({ round = "" }: RoundsProps): React.ReactElement => {
 
   useEffect(() => {
     if (selectedRound !== "") {
+      setRoundDataLoading(true);
       fetch(`http://127.0.0.1:5000/sheets/roundData/${selectedRound}`)
         .then((res) => res.json())
         .then((response) => {
           setSelectedRoundData(response);
+          setRoundDataLoading(false);
         });
     }
   }, [selectedRound]);
@@ -85,17 +90,31 @@ const Rounds = ({ round = "" }: RoundsProps): React.ReactElement => {
   return (
     <>
       <MainNavBar currentScreen="Rounds" />
-      <Grid container direction="row" justify="center">
-        <FormControl className={classes.formControl}>
-          <InputLabel id="roundOptionsSelectLabel">Rounds</InputLabel>
-          <Select
-            labelId="roundOptionsSelectLabel"
-            value={selectedRound}
-            onChange={handleChange}
-          >
-            {options}
-          </Select>
-        </FormControl>
+      <Grid container direction="column" justify="center"
+        alignItems="center">
+        <Grid item>
+          <FormControl className={classes.formControl}>
+            <InputLabel id="roundOptionsSelectLabel">Rounds</InputLabel>
+            <Select
+              labelId="roundOptionsSelectLabel"
+              value={selectedRound}
+              onChange={handleChange}
+            >
+              {options}
+            </Select>
+          </FormControl>
+        </Grid>
+        {roundDataLoading ? (
+          <Grid item>
+            <CircularProgress />
+          </Grid>
+        ) : selectedRound ? (
+          <RoundTable roundData={selectedRoundData} />
+        ) : (
+          <Grid item>
+            <h3>Please select a round</h3>
+          </Grid>
+        )}
       </Grid>
     </>
   );

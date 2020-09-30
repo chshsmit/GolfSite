@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description Main Graph component
  * @created 2020-09-16T13:54:38.707Z-07:00
- * @last-modified 2020-09-24T15:00:48.709Z-07:00
+ * @last-modified 2020-09-30T13:40:10.311Z-07:00
  */
 
 //---------------------------------------------------------------------------------------------------
@@ -49,12 +49,6 @@ const Graph = ({ graphOption }: GraphProps): React.ReactElement => {
       });
   }, [graphOption]);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleClick = (data: any) => {
-    console.log("We clicked a dot");
-    console.log(data.payload);
-  };
-
   return dataLoading ? (
     <CircularProgress />
   ) : (
@@ -70,7 +64,6 @@ const Graph = ({ graphOption }: GraphProps): React.ReactElement => {
           type="monotone"
           dataKey={axes.yAxis}
           stroke="#8884d8"
-          activeDot={{ onClick: handleClick, cursor: "pointer" }}
         />
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
         <XAxis dataKey={axes.xAxis} />

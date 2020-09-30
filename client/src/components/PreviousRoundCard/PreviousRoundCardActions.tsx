@@ -4,7 +4,7 @@
  * @description
  * @created 2020-09-19T16:37:17.051Z-07:00
  * @copyright
- * @last-modified 2020-09-20T11:24:14.595Z-07:00
+ * @last-modified 2020-09-30T13:40:16.526Z-07:00
  */
 
 //---------------------------------------------------------------------------------------------------
@@ -53,9 +53,6 @@ const PreviousRoundCardActions = ({
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
-  console.log(strokesInfo);
-  console.log(parInfo);
 
   return (
     <>

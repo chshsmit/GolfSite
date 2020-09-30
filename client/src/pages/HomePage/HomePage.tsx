@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description
  * @created 2020-09-17T21:41:29.992Z-07:00
- * @last-modified 2020-09-24T14:23:16.978Z-07:00
+ * @last-modified 2020-09-30T13:40:25.358Z-07:00
  */
 
 //---------------------------------------------------------------------------------------------------
@@ -51,8 +51,6 @@ const HomePage = (): React.ReactElement => {
       });
   }, []);
 
-  console.log(homePageData);
-
   return (
     <>
       <MainNavBar currentScreen="Home" />
@@ -71,7 +69,6 @@ const HomePage = (): React.ReactElement => {
               </h1>
             </Grid>
             {homePageData.lastThree.map((round) => {
-              console.log(round);
               return (
                 <Grid
                   xs={4}
