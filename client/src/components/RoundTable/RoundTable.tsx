@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description
  * @created 2020-09-30T13:42:32.862Z-07:00
- * @last-modified 2020-09-30T14:29:29.979Z-07:00
+ * @last-modified 2020-09-30T14:30:00.436Z-07:00
  */
 
 //---------------------------------------------------------------------------------------------------
@@ -42,7 +42,6 @@ const roundTableStyles = makeStyles({
 //---------------------------------------------------------------------------------------------------
 
 const RoundTable = ({ roundData }: RoundTableProps): React.ReactElement => {
-  console.log(roundData);
   const classes = roundTableStyles();
 
   const frontNine: React.ReactElement[] = [];
