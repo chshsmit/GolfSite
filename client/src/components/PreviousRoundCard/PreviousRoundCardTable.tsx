@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description
  * @created 2020-09-20T11:26:50.113Z-07:00
- * @last-modified 2020-09-20T11:59:56.314Z-07:00
+ * @last-modified 2020-09-30T14:22:07.706Z-07:00
  */
 
 //---------------------------------------------------------------------------------------------------
@@ -48,10 +48,8 @@ const PreviousRoundCardTable = ({
   const frontNine: React.ReactElement[] = [];
   const backNine: React.ReactElement[] = [];
 
-  let loopIndex = 1;
-
-  for (loopIndex; loopIndex < 10; loopIndex++) {
-    frontNine.push(
+  for (let loopIndex = 1; loopIndex <= 18; loopIndex++) {
+    const newRow = (
       <TableRow key={`hole${loopIndex}`}>
         <TableCell component="th" scope="row">
           {`Hole ${loopIndex}`}
@@ -60,18 +58,8 @@ const PreviousRoundCardTable = ({
         <TableCell align="right">{strokesInfo[`hole${loopIndex}`]}</TableCell>
       </TableRow>
     );
-  }
 
-  for (loopIndex; loopIndex < 19; loopIndex++) {
-    backNine.push(
-      <TableRow key={`hole${loopIndex}`}>
-        <TableCell component="th" scope="row">
-          {`Hole ${loopIndex}`}
-        </TableCell>
-        <TableCell align="right">{parInfo[`hole${loopIndex}`]}</TableCell>
-        <TableCell align="right">{strokesInfo[`hole${loopIndex}`]}</TableCell>
-      </TableRow>
-    );
+    loopIndex < 10 ? frontNine.push(newRow) : backNine.push(newRow);
   }
 
   return (

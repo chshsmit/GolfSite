@@ -3,7 +3,7 @@
  * @author Christopher Smith
  * @description Types from API responses
  * @created 2020-09-19T10:59:48.624Z-07:00
- * @last-modified 2020-09-20T11:49:32.044Z-07:00
+ * @last-modified 2020-09-30T14:03:20.988Z-07:00
  */
 
 //-------------------------------------------------
@@ -58,7 +58,7 @@ export interface RoundCategoryNumberData {
   total: number;
 }
 export interface RoundCategoryStringData {
-  hole1: number;
+  [hole1: string]: number;
   hole10: number;
   hole11: number;
   hole12: number;
